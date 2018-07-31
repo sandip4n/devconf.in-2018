@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+#
+# Copyright 2018 Sandipan Das, IBM Corporation
+#
+# Trace the write() system call by attaching kprobes that are
+# triggered on entry and exit. This will print the arguments
+# and return value each time we enter or exit from this system
+# call only for a specific process.
+#
 
 from bcc import BPF
 import argparse

@@ -1,3 +1,11 @@
+/*
+ * Copyright 2018 Sandipan Das, IBM Corporation
+ *
+ * This uses simple loops to make the execution
+ * time of a function vary based on its arguments.
+ *
+ */
+
 #include <time.h>
 #include <stdio.h>
 #include <stdint.h>

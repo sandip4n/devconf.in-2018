@@ -1,3 +1,7 @@
+# Copyright 2018 Sandipan Das, IBM Corporation
+# A simple Makefile to build the workloads
+#
+
 CC = gcc
 CFLAGS = -Wall -O0 -g
 

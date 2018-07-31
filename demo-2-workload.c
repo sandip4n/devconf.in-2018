@@ -1,3 +1,12 @@
+/*
+ * Copyright 2018 Sandipan Das, IBM Corporation
+ *
+ * This will generate random-length prefixes of a
+ * string and attempt to print it with the write
+ * system call.
+ *
+ */
+
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>

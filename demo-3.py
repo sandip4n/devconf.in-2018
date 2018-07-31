@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+#
+# Copyright 2018 Sandipan Das, IBM Corporation
+#
+# Trace the foo() function from the workload by attaching
+# uprobes that are triggered on entry and exit. This will
+# print the approximate execution time of foo() and shows
+# how the value of the argument affects it.
+#
 
 from bcc import BPF
 import argparse
