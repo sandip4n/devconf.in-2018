@@ -33,10 +33,22 @@ int on_write_entry(struct pt_regs *ctx) {
      * to the file referred to by the file descriptor 'fd'
      */
 
+#ifdef __x86_64__
+    struct pt_regs args;
+
+    /* Read argument to stub */
+    bpf_probe_read(&args, sizeof(struct pt_regs), (void *) PT_REGS_PARM1(ctx));
+
+    /* Read arguments to actual function */
+    int fd = (unsigned int) PT_REGS_PARM1(&args);
+    char *buf = (char *) PT_REGS_PARM2(&args);
+    size_t count = (size_t) PT_REGS_PARM3(&args);
+#else
     /* Read arguments */
     int fd = (int) PT_REGS_PARM1(ctx);
     char *buf = (char *) PT_REGS_PARM2(ctx);
     size_t count = (size_t) PT_REGS_PARM3(ctx);
+#endif
 
     /* Read PID of current process */
     unsigned int pid = bpf_get_current_pid_tgid();
