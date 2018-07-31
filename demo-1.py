@@ -24,10 +24,10 @@ int on_write_entry(struct pt_regs *ctx) {
 
     /* Read arguments */
     int fd = (int) PT_REGS_PARM1(ctx);
-    void *buf = (void *) PT_REGS_PARM2(ctx);
+    char *buf = (char *) PT_REGS_PARM2(ctx);
     size_t count = (size_t) PT_REGS_PARM3(ctx);
 
-    bpf_trace_printk("entry: %d, 0x%p, %lu\\n", fd, buf, count);
+    bpf_trace_printk("entry: %d, %s, %lu\\n", fd, buf, count);
     return 0;
 }
 

@@ -36,7 +36,7 @@ int main(int argc, char **argv)
         buf[bytes] = '\0';
 
         /* Print buffer with a write() system call */
-        puts(buf);
+        write(STDOUT_FILENO, buf, bytes);
 
         /* Wait for a couple of seconds */
         sleep(2);
