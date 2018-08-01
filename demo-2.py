@@ -57,7 +57,7 @@ int on_write_entry(struct pt_regs *ctx) {
     if (pid != FILTER_PID)
         return 0;
 
-    bpf_trace_printk("entry: %d, %s, %lu\\n", fd, buf, count);
+    bpf_trace_printk("sys_write() entry: fd = %d, buf = \\"%s\\", count = %lu\\n", fd, buf, count);
     return 0;
 }
 
@@ -80,7 +80,7 @@ int on_write_exit(struct pt_regs *ctx) {
     if (pid != FILTER_PID)
         return 0;
 
-    bpf_trace_printk("exit: %lu\\n", ret);
+    bpf_trace_printk("sys_write() return: %lu\\n", ret);
     return 0;
 }
 """.replace("DEFINE_FILTER_PID", "#define FILTER_PID %u" % args.pid if args.pid > 0 else "")
@@ -91,7 +91,7 @@ b.attach_kprobe(event=b.get_syscall_fnname("write"), fn_name="on_write_entry")
 b.attach_kretprobe(event=b.get_syscall_fnname("write"), fn_name="on_write_exit")
 
 # header
-print("%-18s %-16s %-6s %s" % ("TIME(s)", "COMM", "PID", "MESSAGE"))
+print("%-6s %s" % ("PID", "MESSAGE"))
 
 # format output
 while 1:
@@ -102,4 +102,4 @@ while 1:
     except KeyboardInterrupt:
         print
         break
-    print("%-18.9f %-16s %-6d %s" % (ts, task, pid, msg))
+    print("%-6d %s" % (pid, msg))

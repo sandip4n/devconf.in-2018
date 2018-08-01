@@ -112,7 +112,7 @@ b.attach_uprobe(name="./busy-loop", sym="foo", fn_name="on_entry")
 b.attach_uretprobe(name="./busy-loop", sym="foo", fn_name="on_exit")
 
 # header
-print("%-18s %-16s %-6s %s" % ("TIME(s)", "COMM", "PID", "MESSAGE"))
+print("%-6s %s" % ("PID", "MESSAGE"))
 
 # format output
 while 1:
@@ -123,4 +123,4 @@ while 1:
     except KeyboardInterrupt:
         print
         break
-    print("%-18.9f %-16s %-6d %s" % (ts, task, pid, msg))
+    print("%-6d %s" % (pid, msg))
