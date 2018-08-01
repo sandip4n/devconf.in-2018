@@ -11,7 +11,7 @@ BINS = $(basename $(SRCS))
 all: $(BINS)
 
 $(BINS): %: $(SRCS)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $@.c -o $@
 
 clean:
 	rm -f $(BINS)
