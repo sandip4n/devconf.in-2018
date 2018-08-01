@@ -5,7 +5,7 @@
 CC = gcc
 CFLAGS = -Wall -O0 -g
 
-SRCS = demo-2-workload.c demo-3-workload.c
+SRCS = random-prefix.c busy-loop.c
 BINS = $(basename $(SRCS))
 
 all: $(BINS)

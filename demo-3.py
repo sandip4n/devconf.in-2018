@@ -108,8 +108,8 @@ int on_exit(struct pt_regs *ctx) {
 
 # load BPF program
 b = BPF(text=prog)
-b.attach_uprobe(name="./demo-3-workload", sym="foo", fn_name="on_entry")
-b.attach_uretprobe(name="./demo-3-workload", sym="foo", fn_name="on_exit")
+b.attach_uprobe(name="./busy-loop", sym="foo", fn_name="on_entry")
+b.attach_uretprobe(name="./busy-loop", sym="foo", fn_name="on_exit")
 
 # header
 print("%-18s %-16s %-6s %s" % ("TIME(s)", "COMM", "PID", "MESSAGE"))
