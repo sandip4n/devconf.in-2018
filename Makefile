@@ -5,7 +5,7 @@
 CC = gcc
 CFLAGS = -Wall -O0 -g
 
-SRCS = random-prefix.c busy-loop.c
+SRCS = random-prefix.c busy-loop.c malloc-sleep-free.c random-sleep.c
 BINS = $(basename $(SRCS))
 
 all: $(BINS)
