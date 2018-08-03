@@ -5,13 +5,13 @@
 CC = gcc
 CFLAGS = -Wall -O0 -g
 
-SRCS = random-prefix.c busy-loop.c malloc-sleep-free.c random-sleep.c
+SRCS = $(wildcard *.c)
 BINS = $(basename $(SRCS))
 
 all: $(BINS)
 
-$(BINS): %: $(SRCS)
-	$(CC) $(CFLAGS) $@.c -o $@
+%: %.c
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
 	rm -f $(BINS)
