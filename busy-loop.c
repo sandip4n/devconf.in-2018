@@ -20,11 +20,11 @@ int foo(int x)
      * time of foo() will vary
      */
     if (x == 0) {
-        for (i = 0; i < INT8_MAX; ++i);
+        for (i = 0; i < INT8_MAX / 2; ++i);
     } else if (x == 1) {
-        for (i = 0; i < INT16_MAX; ++i);
+        for (i = 0; i < INT16_MAX / 2; ++i);
     } else if (x == 2) {
-        for (i = 0; i < INT32_MAX; ++i);
+        for (i = 0; i < INT32_MAX / 2; ++i);
     }
 
     return 0;
